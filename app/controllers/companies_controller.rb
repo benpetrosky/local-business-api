@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
 
     def update
       @company = Company.find(params[:id])
-      if @company.update!(company_params
+      if @company.update!(company_params)
         render status: 200, json: {
          message: "Your company has been updated successfully."
          }
@@ -28,13 +28,17 @@ class CompaniesController < ApplicationController
 
     def destroy
        @company = Company.find(params[:id])
-       @company.destroy
+       if @company.destroy
+         render status: 200, json: {
+         message: "Your quote has been deleted successfully"
+       }
+       end
      end
 
    private
 
 
    def company_params
-     params.permit(:author, :content)
+     params.permit(:name, :department, :product)
    end
  end
