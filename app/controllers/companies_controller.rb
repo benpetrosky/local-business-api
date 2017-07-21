@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
 
 
-
     def index
         @companies = Company.where(nil)
         if params[:name].present? && params[:name] === "random"
@@ -10,8 +9,6 @@ class CompaniesController < ApplicationController
       if params[:name].present? && params[:name] != "random"
         @companies = @companies.search(params[:name])
       end
-
-
 
       json_response(@companies)
     end
