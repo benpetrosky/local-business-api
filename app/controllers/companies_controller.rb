@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
 
     def create
       @company = Company.create!(company_params)
-      json_response(@company)
+      json_response(@company, :created)
     end
 
     def update
