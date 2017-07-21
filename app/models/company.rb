@@ -4,4 +4,7 @@ class Company < ApplicationRecord
   validates :department, presence: true
   validates :product, presence: true
 
+    scope :search, -> (name) { where("name like ?", "#{name}%") }
+
+
 end

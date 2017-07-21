@@ -3,7 +3,9 @@ class CompaniesController < ApplicationController
 
 
     def index
-      @companies = Company.all
+        @companies = Company.where(nil)
+        @companies = @companies.search(params[:name]) if params[:name].present?
+
 
       json_response(@companies)
     end
@@ -45,6 +47,10 @@ class CompaniesController < ApplicationController
      end
 
    private
+
+   def filtering_params(params)
+     params.slice(:name, :department, :product)
+   end
 
 
    def company_params
