@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
 
     def index
       @companies = Company.all
+
       json_response(@companies)
     end
 
@@ -30,7 +31,7 @@ class CompaniesController < ApplicationController
         render status: 200, json: {
          message: "Your company has been updated successfully."
          }
-       else
+
       end
     end
 
