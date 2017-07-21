@@ -4,7 +4,13 @@ class CompaniesController < ApplicationController
 
     def index
         @companies = Company.where(nil)
-        @companies = @companies.search(params[:name]) if params[:name].present?
+        if params[:name].present? && params[:name] === "random"
+        @companies = Company.find(rand(0..(Company.all.length)))
+      end
+      if params[:name].present? && params[:name] != "random"
+        @companies = @companies.search(params[:name])
+      end
+
 
 
       json_response(@companies)

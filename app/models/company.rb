@@ -7,4 +7,6 @@ class Company < ApplicationRecord
     scope :search, -> (name) { where("name like ?", "#{name}%") }
 
 
+
+
 end
